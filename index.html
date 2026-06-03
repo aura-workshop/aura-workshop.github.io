@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AURA 2026 — choose a design</title>
+  <meta name="description" content="AURA — the First Workshop on Autonomous Research Agents at NeurIPS 2026. Two design directions to preview.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="site-academic/assets/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..800&family=Bricolage+Grotesque:opsz,wght@12..48,500..800&family=Newsreader:ital@1&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{--bg:#101216;--card-r:18px}
+    body{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:#e9eaf0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
+    body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:
+      radial-gradient(820px 520px at 16% 8%,rgba(47,75,189,.20),transparent 60%),
+      radial-gradient(760px 520px at 88% 96%,rgba(223,67,34,.16),transparent 60%)}
+    .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:clamp(2rem,6vw,4.5rem) clamp(1.2rem,4vw,2.5rem);flex:1;display:flex;flex-direction:column}
+    header.top{text-align:center;margin-bottom:clamp(2.2rem,5vw,3.6rem)}
+    .eyebrow{font-family:ui-monospace,"SF Mono",Menlo,monospace;text-transform:uppercase;letter-spacing:.32em;font-size:.7rem;color:#8b90a6;margin-bottom:1.3rem;padding-left:.32em}
+    .mark{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(3.2rem,11vw,6rem);line-height:.95;letter-spacing:-.03em;background:linear-gradient(115deg,#fff 30%,#a5b4fc 60%,#ff8a6b 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .full{margin-top:.7rem;font-size:clamp(1rem,2.4vw,1.35rem);color:#aeb2c6;font-weight:500}
+    .hint{margin-top:1.9rem;font-size:1.02rem;color:#c8ccdc}
+    .hint b{color:#fff;font-weight:600}
+    .cards{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2.5vw,1.6rem);margin-top:clamp(1.6rem,4vw,2.4rem)}
+    @media(max-width:720px){.cards{grid-template-columns:1fr}}
+    .card{position:relative;display:block;border-radius:var(--card-r);overflow:hidden;text-decoration:none;color:inherit;border:1px solid rgba(255,255,255,.1);transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s;isolation:isolate}
+    .card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -28px rgba(0,0,0,.7)}
+    .card:focus-visible{outline:3px solid #fff;outline-offset:3px}
+    .preview{height:230px;padding:1.8rem;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+    /* academic preview */
+    .acad .preview{background:#f6f4ee;color:#1a2238}
+    .acad .pv-mark{font-family:'Fraunces',serif;font-weight:700;font-size:3.2rem;letter-spacing:-.03em;color:#1a2238}
+    .acad .pv-mark b{color:#2f4bbd}
+    .acad .pv-sub{font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;color:#46506a}
+    .acad .pv-meta{font-family:ui-monospace,monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:#2f4bbd}
+    /* editorial preview */
+    .edit .preview{background:#f1ece0;color:#17120b}
+    .edit .pv-mark{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:3.4rem;text-transform:uppercase;letter-spacing:-.04em;color:#17120b}
+    .edit .pv-mark b{color:#df4322}
+    .edit .pv-sub{font-family:'Newsreader',serif;font-style:italic;font-size:1.25rem;color:#322b20}
+    .edit .pv-meta{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:#df4322}
+    .edit .pv-tag{position:absolute;top:1.8rem;right:1.8rem;width:22px;height:22px;background:#df4322}
+    .meta{padding:1.3rem 1.6rem 1.5rem;background:#171a20;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .meta .label{font-weight:700;font-size:1.05rem}
+    .meta .label span{display:block;font-weight:400;font-size:.82rem;color:#9398ad;margin-top:.2rem;font-family:ui-monospace,monospace;letter-spacing:.02em}
+    .go{flex-shrink:0;font-size:.85rem;font-weight:700;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);padding:.55rem .95rem;border-radius:999px;transition:background .2s,transform .2s}
+    .card:hover .go{background:rgba(255,255,255,.2);transform:translateX(3px)}
+    footer.foot{text-align:center;margin-top:clamp(2rem,5vw,3rem);color:#777c92;font-size:.85rem;font-family:ui-monospace,monospace;letter-spacing:.02em}
+    footer.foot b{color:#aeb2c6;font-weight:600}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <p class="eyebrow">First Workshop · NeurIPS 2026</p>
+      <div class="mark">AURA</div>
+      <div class="full">Autonomous Research Agents</div>
+      <p class="hint">Two design directions — <b>same content, different skin</b>. Open either to explore.</p>
+    </header>
+
+    <div class="cards">
+      <a class="card acad" href="site-academic/">
+        <div class="preview">
+          <div>
+            <div class="pv-mark">AUR<b>A</b></div>
+            <div class="pv-sub">agents that do research</div>
+          </div>
+          <div class="pv-meta">Cream · Navy · Royal blue</div>
+        </div>
+        <div class="meta">
+          <div class="label">Academic Light <span>Fraunces · Hanken Grotesk</span></div>
+          <div class="go">Open →</div>
+        </div>
+      </a>
+
+      <a class="card edit" href="site-editorial/">
+        <div class="preview">
+          <div class="pv-tag"></div>
+          <div>
+            <div class="pv-mark">AUR<b>A</b></div>
+            <div class="pv-sub">agents that do research</div>
+          </div>
+          <div class="pv-meta">Paper · Ink · Vermillion</div>
+        </div>
+        <div class="meta">
+          <div class="label">Editorial Bold <span>Bricolage Grotesque · Newsreader</span></div>
+          <div class="go">Open →</div>
+        </div>
+      </a>
+    </div>
+
+    <footer class="foot">
+      Internal preview for the <b>AURA</b> team · NeurIPS 2026 · San Diego, CA
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="3" fill="#f1ece0"/>
+  <rect x="3" y="3" width="58" height="58" rx="1" fill="none" stroke="#17120b" stroke-width="3"/>
+  <text x="50%" y="54%" dominant-baseline="central" text-anchor="middle"
+        font-family="'Arial Black', system-ui, sans-serif" font-size="36" font-weight="800"
+        fill="#17120b">A</text>
+  <rect x="40" y="40" width="11" height="11" fill="#df4322"/>
+</svg>
