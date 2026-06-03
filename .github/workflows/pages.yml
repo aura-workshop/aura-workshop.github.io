@@ -25,6 +25,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Trim non-public files (archive/ stays in the repo but is not published)
+        run: rm -rf archive
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:

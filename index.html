@@ -3,96 +3,243 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AURA 2026 — choose a design</title>
-  <meta name="description" content="AURA — the First Workshop on Autonomous Research Agents at NeurIPS 2026. Two design directions to preview.">
-  <meta name="robots" content="noindex">
-  <link rel="icon" type="image/svg+xml" href="site-academic/assets/favicon.svg">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..800&family=Bricolage+Grotesque:opsz,wght@12..48,500..800&family=Newsreader:ital@1&display=swap" rel="stylesheet">
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    :root{--bg:#101216;--card-r:18px}
-    body{font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:#e9eaf0;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
-    body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:
-      radial-gradient(820px 520px at 16% 8%,rgba(47,75,189,.20),transparent 60%),
-      radial-gradient(760px 520px at 88% 96%,rgba(223,67,34,.16),transparent 60%)}
-    .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:clamp(2rem,6vw,4.5rem) clamp(1.2rem,4vw,2.5rem);flex:1;display:flex;flex-direction:column}
-    header.top{text-align:center;margin-bottom:clamp(2.2rem,5vw,3.6rem)}
-    .eyebrow{font-family:ui-monospace,"SF Mono",Menlo,monospace;text-transform:uppercase;letter-spacing:.32em;font-size:.7rem;color:#8b90a6;margin-bottom:1.3rem;padding-left:.32em}
-    .mark{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(3.2rem,11vw,6rem);line-height:.95;letter-spacing:-.03em;background:linear-gradient(115deg,#fff 30%,#a5b4fc 60%,#ff8a6b 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .full{margin-top:.7rem;font-size:clamp(1rem,2.4vw,1.35rem);color:#aeb2c6;font-weight:500}
-    .hint{margin-top:1.9rem;font-size:1.02rem;color:#c8ccdc}
-    .hint b{color:#fff;font-weight:600}
-    .cards{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2.5vw,1.6rem);margin-top:clamp(1.6rem,4vw,2.4rem)}
-    @media(max-width:720px){.cards{grid-template-columns:1fr}}
-    .card{position:relative;display:block;border-radius:var(--card-r);overflow:hidden;text-decoration:none;color:inherit;border:1px solid rgba(255,255,255,.1);transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s;isolation:isolate}
-    .card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -28px rgba(0,0,0,.7)}
-    .card:focus-visible{outline:3px solid #fff;outline-offset:3px}
-    .preview{height:230px;padding:1.8rem;display:flex;flex-direction:column;justify-content:space-between;position:relative}
-    /* academic preview */
-    .acad .preview{background:#f6f4ee;color:#1a2238}
-    .acad .pv-mark{font-family:'Fraunces',serif;font-weight:700;font-size:3.2rem;letter-spacing:-.03em;color:#1a2238}
-    .acad .pv-mark b{color:#2f4bbd}
-    .acad .pv-sub{font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;color:#46506a}
-    .acad .pv-meta{font-family:ui-monospace,monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:#2f4bbd}
-    /* editorial preview */
-    .edit .preview{background:#f1ece0;color:#17120b}
-    .edit .pv-mark{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:3.4rem;text-transform:uppercase;letter-spacing:-.04em;color:#17120b}
-    .edit .pv-mark b{color:#df4322}
-    .edit .pv-sub{font-family:'Newsreader',serif;font-style:italic;font-size:1.25rem;color:#322b20}
-    .edit .pv-meta{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:#df4322}
-    .edit .pv-tag{position:absolute;top:1.8rem;right:1.8rem;width:22px;height:22px;background:#df4322}
-    .meta{padding:1.3rem 1.6rem 1.5rem;background:#171a20;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-    .meta .label{font-weight:700;font-size:1.05rem}
-    .meta .label span{display:block;font-weight:400;font-size:.82rem;color:#9398ad;margin-top:.2rem;font-family:ui-monospace,monospace;letter-spacing:.02em}
-    .go{flex-shrink:0;font-size:.85rem;font-weight:700;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);padding:.55rem .95rem;border-radius:999px;transition:background .2s,transform .2s}
-    .card:hover .go{background:rgba(255,255,255,.2);transform:translateX(3px)}
-    footer.foot{text-align:center;margin-top:clamp(2rem,5vw,3rem);color:#777c92;font-size:.85rem;font-family:ui-monospace,monospace;letter-spacing:.02em}
-    footer.foot b{color:#aeb2c6;font-weight:600}
-  </style>
+  <title>AURA 2026 · The First Workshop on Autonomous Research Agents</title>
+  <meta name="description" content="AURA — the first workshop on Autonomous Research Agents, at NeurIPS 2026. AI agents that form hypotheses, run experiments, and write the paper.">
+  <meta property="og:title" content="AURA 2026 · Autonomous Research Agents">
+  <meta property="og:description" content="The first workshop on Autonomous Research Agents, at NeurIPS 2026.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-  <div class="wrap">
-    <header class="top">
-      <p class="eyebrow">First Workshop · NeurIPS 2026</p>
-      <div class="mark">AURA</div>
-      <div class="full">Autonomous Research Agents</div>
-      <p class="hint">Two design directions — <b>same content, different skin</b>. Open either to explore.</p>
-    </header>
 
-    <div class="cards">
-      <a class="card acad" href="site-academic/">
-        <div class="preview">
-          <div>
-            <div class="pv-mark">AU<b>R</b>A</div>
-            <div class="pv-sub">agents that do research</div>
-          </div>
-          <div class="pv-meta">Cream · Navy · Royal blue</div>
-        </div>
-        <div class="meta">
-          <div class="label">Academic Light <span>Fraunces · Hanken Grotesk</span></div>
-          <div class="go">Open →</div>
-        </div>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="AURA — home">
+        <span class="mark">AU<b>R</b>A</span>
+        <span class="tag">NeurIPS 2026</span>
       </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links"><span></span></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a data-page="index.html" href="index.html">Overview</a></li>
+        <li><a data-page="cfp.html" href="cfp.html">Call for Papers</a></li>
+        <li><a data-page="speakers.html" href="speakers.html">Speakers</a></li>
+        <li><a data-page="schedule.html" href="schedule.html">Schedule</a></li>
+        <li><a data-page="organizers.html" href="organizers.html">Organizers</a></li>
+        <li><a class="nav-cta" href="cfp.html#submit">Submit&nbsp;→</a></li>
+      </ul>
+    </nav>
+  </header>
 
-      <a class="card edit" href="site-editorial/">
-        <div class="preview">
-          <div class="pv-tag"></div>
-          <div>
-            <div class="pv-mark">AU<b>R</b>A</div>
-            <div class="pv-sub">agents that do research</div>
+  <main>
+    <!-- ============================ HERO ============================ -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner reveal">
+          <p class="eyebrow">The First Workshop on</p>
+          <h1>Autonomous <span class="blue">Research</span> Agents</h1>
+          <p class="hero-sub">AI agents that form hypotheses, run experiments, and write the paper.</p>
+          <div class="hero-meta">
+            <span><b>AURA</b> @ NeurIPS&nbsp;2026</span><span class="sep">/</span>
+            <span>Location TBA</span><span class="sep">/</span>
+            <!-- TODO(AURA): set exact workshop day once NeurIPS schedules workshops -->
+            <span>December&nbsp;2026 <span class="tba">Day TBA</span></span>
           </div>
-          <div class="pv-meta">Paper · Ink · Vermillion</div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="cfp.html#submit">Submit a Paper <span class="arr">→</span></a>
+            <a class="btn btn-ghost" href="cfp.html">Read the CFP</a>
+          </div>
         </div>
-        <div class="meta">
-          <div class="label">Editorial Bold <span>Bricolage Grotesque · Newsreader</span></div>
-          <div class="go">Open →</div>
+      </div>
+    </section>
+
+    <!-- ============================ OVERVIEW ============================ -->
+    <section class="section" id="about">
+      <div class="container split cols-2">
+        <div>
+          <p class="eyebrow">About AURA</p>
+          <h2 class="section-title">The first workshop on agents that <em>do</em> research.</h2>
+          <div class="prose">
+            <p class="lead">Large language model agents are beginning to carry out the full arc of scientific research — generating hypotheses, designing and running experiments, analyzing results, and communicating findings.</p>
+            <p>AURA convenes researchers across machine learning, agents, evaluation, and the science of science to chart a path toward autonomous research systems that are both <strong>capable</strong> and <strong>trustworthy</strong>. We welcome work spanning agent architectures, automated experimentation, evaluation and reproducibility, safety and oversight, and real-world scientific discovery.</p>
+            <div class="btn-row mt-s">
+              <a class="btn btn-ghost" href="cfp.html">Explore the Call for Papers <span class="arr">→</span></a>
+            </div>
+          </div>
         </div>
-      </a>
+        <aside class="card aside-card" aria-label="Workshop at a glance">
+          <h4>At a glance</h4>
+          <dl>
+            <dt>Venue</dt><dd>NeurIPS 2026</dd>
+            <dt>Location</dt><dd><span class="tba">TBA</span></dd>
+            <dt>Date</dt><dd>Dec 2026 <span class="tba">TBA</span></dd>
+            <dt>Proceedings</dt><dd>Archival or non-archival</dd>
+            <dt>Format</dt><dd>4–8 pages <span class="tba">TBA</span></dd>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============================ THEMATIC PILLARS ============================ -->
+    <section class="section" id="themes">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Thematic Pillars</p>
+          <h2 class="section-title">Six threads of inquiry.</h2>
+          <p class="section-intro">AURA's program is organized around six pillars at the frontier of autonomous research.</p>
+        </div>
+        <div class="pillars">
+          <div class="card pillar">
+            <div class="pillar-num">01</div>
+            <h3 class="pillar-name">Weak-to-Strong Generalization &amp; PRMs</h3>
+            <p class="pillar-desc">Supervising stronger models with weaker teachers, and process reward models that score reasoning steps — not just final answers.</p>
+          </div>
+          <div class="card pillar">
+            <div class="pillar-num">02</div>
+            <h3 class="pillar-name">Meta-Optimization and Harnesses</h3>
+            <p class="pillar-desc">Agent harnesses, scaffolds, and outer-loop optimization that improve how agents are orchestrated, prompted, and equipped with tools.</p>
+          </div>
+          <div class="card pillar">
+            <div class="pillar-num">03</div>
+            <h3 class="pillar-name">Heuristic Discovery &amp; Evolutionary Primitives</h3>
+            <p class="pillar-desc">Automatically discovering heuristics, programs, and strategies through search and evolutionary methods.</p>
+          </div>
+          <div class="card pillar">
+            <div class="pillar-num">04</div>
+            <h3 class="pillar-name">Exploration Scaffolding &amp; Sandboxes</h3>
+            <p class="pillar-desc">Environments, sandboxes, and scaffolds that let agents safely explore, run experiments, and gather feedback.</p>
+          </div>
+          <div class="card pillar">
+            <div class="pillar-num">05</div>
+            <h3 class="pillar-name">Verifiability &amp; Adversarial Invariants</h3>
+            <p class="pillar-desc">Verifiers, checkers, and adversarial invariants that make agent outputs checkable and robust to gaming.</p>
+          </div>
+          <div class="card pillar">
+            <div class="pillar-num">06</div>
+            <h3 class="pillar-name">Epistemology and Benchmarking for Agentic Science</h3>
+            <p class="pillar-desc">How we know agentic science works — benchmarks and soundness tests such as EXP-Bench and SoundnessBench.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ DATES ============================ -->
+    <section class="section" id="dates">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Mark your calendar</p>
+          <h2 class="section-title">Important Dates</h2>
+          <p class="section-intro">Deadlines are being finalized. Times are anywhere-on-Earth (AoE).</p>
+        </div>
+        <div class="dates-grid">
+          <!-- TODO(AURA): fill in submissions-open date -->
+          <div class="date-cell"><div class="dl">Submissions Open</div><div class="dv"><span class="tba">TBA</span></div></div>
+          <!-- TODO(AURA): fill in submission deadline -->
+          <div class="date-cell is-hot"><div class="dl">Submission Deadline</div><div class="dv"><span class="tba">TBA</span></div></div>
+          <!-- TODO(AURA): fill in notification date -->
+          <div class="date-cell"><div class="dl">Notification</div><div class="dv"><span class="tba">TBA</span></div></div>
+          <!-- TODO(AURA): fill in camera-ready date -->
+          <div class="date-cell"><div class="dl">Camera-Ready</div><div class="dv"><span class="tba">TBA</span></div></div>
+          <div class="date-cell"><div class="dl">Workshop</div><div class="dv">Dec 2026</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ SPEAKERS PREVIEW ============================ -->
+    <section class="section" id="speakers">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Invited Speakers</p>
+          <h2 class="section-title">A lineup at the frontier.</h2>
+          <p class="section-intro">Leading voices in agents, robustness, reinforcement learning, and AI for science.</p>
+        </div>
+        <div class="speaker-preview">
+          <div class="sp"><div class="n">Florian Tramèr</div><div class="a">ETH / Stanford</div></div>
+          <div class="sp"><div class="n">Aditi Raghunathan</div><div class="a">CMU</div></div>
+          <div class="sp"><div class="n">Sergey Levine</div><div class="a">UC Berkeley</div></div>
+          <div class="sp"><div class="n">Archit Sharma</div><div class="a">Stanford</div></div>
+          <div class="sp"><div class="n">Xin Eric Wang</div><div class="a">UCSB</div></div>
+        </div>
+        <div class="btn-row mt-m">
+          <a class="btn btn-ghost" href="speakers.html">All speakers <span class="arr">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ SPONSORS ============================ -->
+    <section class="section" id="sponsors">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Sponsors</p>
+          <h2 class="section-title">Supported by</h2>
+          <p class="section-intro">AURA is hosted by Patronus AI, with award sponsorship from the Center for AI Safety.</p>
+        </div>
+        <div class="sponsors">
+          <div class="card sponsor sponsor-lead">
+            <div class="sponsor-role">Host &amp; Organizer</div>
+            <img class="sponsor-logo" src="assets/sponsors/patronus.svg" alt="Patronus AI" width="212" height="38">
+            <p class="sponsor-note">Presenting the inaugural workshop on autonomous research agents.</p>
+          </div>
+          <div class="card sponsor">
+            <div class="sponsor-role">Award Sponsor</div>
+            <img class="sponsor-logo" src="assets/sponsors/cais.svg" alt="Center for AI Safety" width="218" height="70">
+            <p class="sponsor-note">Sponsoring the <strong>Best Paper Award in AI Safety</strong>.</p>
+          </div>
+        </div>
+        <p class="lead-note mt-m"><!-- TODO(AURA): add sponsorship prospectus link if available -->Interested in sponsoring AURA? Reach the organizers at <a class="prose" style="color:var(--accent);font-weight:600" href="mailto:aura-workshop@googlegroups.com">aura-workshop@googlegroups.com</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============================ CTA ============================ -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-band">
+          <p class="eyebrow">Call for Papers — Open</p>
+          <h2>Submit your work on autonomous research agents.</h2>
+          <p>Archival &amp; non-archival tracks · 4–8 pages in NeurIPS format <span class="tba">TBA</span> · deadline <span class="tba">TBA</span>. Accepted papers are presented at the workshop during NeurIPS 2026.</p>
+          <div class="btn-row mt-m">
+            <a class="btn btn-primary" href="cfp.html#submit">Submission Details</a>
+            <a class="btn btn-ghost" href="cfp.html">Read the full CFP</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="mark">AU<b>R</b>A</div>
+          <p>The First Workshop on Autonomous Research Agents — NeurIPS 2026 · location TBA.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Workshop</h5>
+          <a href="index.html">Overview</a>
+          <a href="cfp.html">Call for Papers</a>
+          <a href="speakers.html">Speakers</a>
+          <a href="schedule.html">Schedule</a>
+          <a href="organizers.html">Organizers</a>
+          <a href="index.html#sponsors">Sponsors</a>
+          <a href="papers.html">Accepted Papers</a>
+        </div>
+        <div class="footer-col">
+          <h5>Connect</h5>
+          <!-- TODO(AURA): set workshop contact email -->
+          <a href="mailto:aura-workshop@googlegroups.com">aura-workshop@googlegroups.com</a>
+          <!-- TODO(AURA): set OpenReview venue link -->
+          <span>OpenReview <span class="tba">TBA</span></span>
+          <!-- TODO(AURA): set social link -->
+          <span>X / Twitter <span class="tba">TBA</span></span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 AURA Workshop</span>
+        <span>NeurIPS 2026 · Location TBA</span>
+      </div>
     </div>
+  </footer>
 
-    <footer class="foot">
-      Internal preview for the <b>AURA</b> team · NeurIPS 2026 · Location TBA
-    </footer>
-  </div>
+  <script src="assets/main.js"></script>
 </body>
 </html>
