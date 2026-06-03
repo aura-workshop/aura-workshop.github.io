@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AURA — design directions</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Archivo+Narrow:wght@600;700&family=Anton&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:#0b0b0e;color:#e8e8ef;font-family:ui-sans-serif,-apple-system,"Segoe UI",Roboto,sans-serif}
+  /* tab chrome */
+  .bar{position:sticky;top:0;z-index:100;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;padding:.8rem 1rem;background:rgba(10,10,14,.92);backdrop-filter:blur(10px);border-bottom:1px solid #23232c}
+  .bar .home{font-size:.78rem;color:#8a8a9a;text-decoration:none;margin-right:.5rem;white-space:nowrap}
+  .bar .home:hover{color:#fff}
+  .bar button{font:inherit;font-size:.8rem;font-weight:600;color:#c9c9d6;background:#1c1c24;border:1px solid #2e2e3a;padding:.5rem .9rem;border-radius:8px;cursor:pointer;transition:.15s;white-space:nowrap}
+  .bar button:hover{background:#26262f;color:#fff}
+  .bar button.on{background:#fff;color:#111;border-color:#fff}
+  .stage{display:none}.stage.on{display:block}
+  .cap{font-size:.8rem;color:#9a9aa8;padding:.7rem 1rem;background:#121217;border-bottom:1px solid #23232c;letter-spacing:.01em}
+  .cap b{color:#e8e8ef}
+  /* shared mock helpers */
+  .pg{min-height:78vh}
+  a.btn{text-decoration:none;cursor:pointer}
+  .R{color:inherit}
+
+  /* ===== D1 — TERMINAL / AGENTIC ===== */
+  .t1{background:#0a0e0d;color:#cfe9dd;font-family:'JetBrains Mono',monospace;padding:0}
+  .t1 .win{max-width:1000px;margin:0 auto;padding:clamp(1.5rem,4vw,3rem)}
+  .t1 .chrome{display:flex;gap:.5rem;align-items:center;border:1px solid #1f3a30;border-bottom:none;border-radius:10px 10px 0 0;padding:.7rem 1rem;background:#0d1411}
+  .t1 .chrome i{width:11px;height:11px;border-radius:50%;display:block}
+  .t1 .chrome .r{background:#ff5f57}.t1 .chrome .y{background:#febc2e}.t1 .chrome .g{background:#28c840}
+  .t1 .chrome span{margin-left:.6rem;color:#5f7d70;font-size:.78rem}
+  .t1 .body{border:1px solid #1f3a30;border-radius:0 0 10px 10px;background:#0a0f0d;padding:clamp(1.5rem,4vw,2.6rem)}
+  .t1 .pr{color:#3ecf8e}.t1 .pr b{color:#7fe9b8;font-weight:400}
+  .t1 .big{font-size:clamp(3rem,11vw,7rem);font-weight:700;line-height:1;letter-spacing:-.02em;color:#eafff4;margin:1.2rem 0 .2rem}
+  .t1 .big em{color:#3ecf8e;font-style:normal}
+  .t1 .cur{display:inline-block;width:.6ch;height:1em;background:#3ecf8e;transform:translateY(.12em);animation:bl 1s steps(2) infinite}
+  @keyframes bl{50%{opacity:0}}
+  .t1 .sub{color:#9fc3b3;margin-top:1rem;font-size:1rem}
+  .t1 .meta{color:#5f7d70;margin-top:1.4rem;font-size:.85rem}
+  .t1 .meta b{color:#cfe9dd;font-weight:500}
+  .t1 .row{margin-top:1.8rem;display:flex;gap:.8rem;flex-wrap:wrap}
+  .t1 a.btn{font-size:.82rem;padding:.7rem 1.1rem;border-radius:7px}
+  .t1 .p{background:#3ecf8e;color:#06120d;font-weight:700}
+  .t1 .s{border:1px solid #2c5346;color:#bfe6d5}
+  .t1 .dates{margin-top:2rem;border-top:1px dashed #244236;padding-top:1rem;font-size:.82rem;color:#9fc3b3}
+  .t1 .dates div{display:flex;justify-content:space-between;padding:.35rem 0;border-bottom:1px dashed #18271f}
+  .t1 .dates b{color:#3ecf8e;font-weight:500}
+  .t1 .tba{color:#febc2e}
+
+  /* ===== D2 — SWISS BRUTALIST ===== */
+  .t2{background:#fff;color:#0a0a0a;font-family:'Archivo',sans-serif}
+  .t2 .w{max-width:1200px;margin:0 auto;padding:clamp(1.5rem,4vw,3rem)}
+  .t2 .top{display:flex;justify-content:space-between;align-items:baseline;border-bottom:3px solid #0a0a0a;padding-bottom:.8rem;font-weight:700;text-transform:uppercase;font-size:.8rem;letter-spacing:.02em}
+  .t2 .top .hot{color:#ff2d2d}
+  .t2 h1{font-weight:900;font-size:clamp(4rem,19vw,13rem);line-height:.82;letter-spacing:-.05em;text-transform:uppercase;margin:2.5rem 0 0}
+  .t2 h1 em{font-style:normal;color:#ff2d2d}
+  .t2 .grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:1.5rem;align-items:end;margin-top:1.5rem;border-top:3px solid #0a0a0a;padding-top:1rem}
+  @media(max-width:700px){.t2 .grid2{grid-template-columns:1fr}}
+  .t2 .tag{font-size:clamp(1.1rem,2.6vw,1.6rem);font-weight:700;max-width:24ch;line-height:1.1}
+  .t2 .meta{text-align:right;font-weight:700;text-transform:uppercase;font-size:.85rem;line-height:1.7}
+  .t2 .meta b{display:block;font-size:1.05rem}
+  .t2 .row{margin-top:1.6rem;display:flex;gap:0}
+  .t2 a.btn{font-weight:900;text-transform:uppercase;font-size:.82rem;letter-spacing:.03em;padding:1rem 1.6rem;border:3px solid #0a0a0a}
+  .t2 .p{background:#0a0a0a;color:#fff}.t2 .s{background:#fff;color:#0a0a0a;border-left:none}
+  .t2 .dates{display:grid;grid-template-columns:repeat(4,1fr);border:3px solid #0a0a0a;margin-top:1.8rem}
+  .t2 .dates div{padding:1.1rem;border-right:1px solid #0a0a0a}.t2 .dates div:last-child{border-right:none}
+  .t2 .dl{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+  .t2 .dv{font-size:1.7rem;font-weight:900;margin-top:.4rem;letter-spacing:-.02em}
+  .t2 .hot .dv{color:#ff2d2d}
+
+  /* ===== D3 — RISO PRINT ===== */
+  .t3{background:#f2ede1;color:#181410;font-family:'Archivo Narrow',sans-serif;position:relative}
+  .t3::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(#1814100d 1px,transparent 1.4px);background-size:6px 6px;mix-blend-mode:multiply}
+  .t3 .w{position:relative;max-width:1120px;margin:0 auto;padding:clamp(1.5rem,4vw,3rem)}
+  .t3 .eye{font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;color:#ff3d6e}
+  .t3 h1{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(4.5rem,17vw,12rem);line-height:.82;letter-spacing:.01em;text-transform:uppercase;margin:.8rem 0 0;color:#1d2bd6}
+  .t3 h1 em{font-style:normal;color:#ff3d6e;-webkit-text-stroke:0}
+  .t3 .tag{font-family:'Anton',sans-serif;font-size:clamp(1.4rem,3.4vw,2.4rem);text-transform:uppercase;line-height:1;max-width:18ch;margin-top:.8rem;color:#181410}
+  .t3 .meta{margin-top:1.3rem;font-weight:700;text-transform:uppercase;font-size:.9rem;letter-spacing:.03em;color:#1d2bd6}
+  .t3 .row{margin-top:1.6rem;display:flex;gap:.8rem;flex-wrap:wrap}
+  .t3 a.btn{font-family:'Archivo Narrow';font-weight:700;text-transform:uppercase;font-size:.9rem;letter-spacing:.04em;padding:.8rem 1.5rem}
+  .t3 .p{background:#ff3d6e;color:#fff}.t3 .s{background:transparent;color:#1d2bd6;border:2px solid #1d2bd6}
+  .t3 .dates{margin-top:1.9rem;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:3px solid #181410}
+  .t3 .dates div{padding:1rem .9rem;border-right:1px solid #c9c1ae}.t3 .dates div:last-child{border-right:none}
+  .t3 .dl{font-weight:700;text-transform:uppercase;font-size:.7rem;letter-spacing:.05em;color:#9a8f78}
+  .t3 .dv{font-family:'Anton';font-size:1.6rem;margin-top:.3rem;color:#1d2bd6}
+  .t3 .hot .dv{color:#ff3d6e}
+
+  /* ===== D4 — BLUEPRINT ===== */
+  .t4{background:#08233f;color:#cfe6ff;font-family:'Space Grotesk',sans-serif;position:relative;overflow:hidden}
+  .t4::before{content:"";position:absolute;inset:0;background-image:linear-gradient(#7cc4ff14 1px,transparent 1px),linear-gradient(90deg,#7cc4ff14 1px,transparent 1px);background-size:32px 32px}
+  .t4 .w{position:relative;max-width:1100px;margin:0 auto;padding:clamp(1.6rem,4vw,3.2rem)}
+  .t4 .eye{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#5fb0ff;display:flex;align-items:center;gap:.7rem}
+  .t4 .eye::before{content:"";width:24px;height:1px;background:#5fb0ff}
+  .t4 h1{font-weight:700;font-size:clamp(3.6rem,13vw,9rem);line-height:.9;letter-spacing:-.03em;margin:1.3rem 0 0;color:#eaf4ff;position:relative;display:inline-block}
+  .t4 h1 em{font-style:normal;color:#4cc9f0}
+  .t4 h1::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:1px;background:#4cc9f0;opacity:.5}
+  .t4 h1 .tick{position:absolute;right:-6px;top:-6px;width:12px;height:12px;border:1px solid #4cc9f0;border-radius:50%}
+  .t4 .sub{font-family:'JetBrains Mono',monospace;color:#9cc7f0;margin-top:1.4rem;font-size:.95rem;max-width:42ch}
+  .t4 .meta{font-family:'JetBrains Mono',monospace;margin-top:1.4rem;font-size:.8rem;color:#6fa6da;letter-spacing:.04em}
+  .t4 .meta b{color:#cfe6ff;font-weight:500}
+  .t4 .row{margin-top:1.8rem;display:flex;gap:.8rem;flex-wrap:wrap}
+  .t4 a.btn{font-family:'JetBrains Mono';font-size:.8rem;font-weight:500;letter-spacing:.03em;padding:.8rem 1.3rem;border-radius:4px}
+  .t4 .p{background:#4cc9f0;color:#062338;font-weight:700}.t4 .s{border:1px solid #2f6b97;color:#bcdcf6}
+  .t4 .dates{margin-top:2rem;display:grid;grid-template-columns:repeat(4,1fr);font-family:'JetBrains Mono',monospace;border-top:1px solid #2f6b97}
+  .t4 .dates div{padding:1.1rem .9rem;border-right:1px solid #16395a}.t4 .dates div:last-child{border-right:none}
+  .t4 .dl{font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:#5fb0ff}
+  .t4 .dv{font-size:1.2rem;margin-top:.5rem;color:#eaf4ff;font-weight:500}
+  .t4 .tba{color:#ffd166}
+</style>
+</head>
+<body>
+  <div class="bar">
+    <a class="home" href="../">← themes</a>
+    <button class="on" onclick="show('s1',this)">1 · Terminal</button>
+    <button onclick="show('s2',this)">2 · Swiss Brutalist</button>
+    <button onclick="show('s3',this)">3 · Riso Print</button>
+    <button onclick="show('s4',this)">4 · Blueprint</button>
+  </div>
+
+  <!-- D1 -->
+  <section class="stage on" id="s1">
+    <div class="cap"><b>Terminal / Agentic</b> — monospace, IDE-dark, phosphor green. Leans into the "autonomous agent" theme; feels like a tool, not a brochure.</div>
+    <div class="t1 pg"><div class="win">
+      <div class="chrome"><i class="r"></i><i class="y"></i><i class="g"></i><span>aura — neurips 2026 — bash</span></div>
+      <div class="body">
+        <div class="pr">aura@neurips:~$ <b>./run --workshop</b></div>
+        <div class="big">AU<em>R</em>A<span class="cur"></span></div>
+        <div class="sub"># AI agents that form hypotheses, run experiments, and write the paper.</div>
+        <div class="meta">→ <b>First Workshop on Autonomous Research Agents</b> · NeurIPS 2026 · San Diego, CA · Dec 2026</div>
+        <div class="row"><a class="btn p">submit --paper ↵</a><a class="btn s">man cfp</a></div>
+        <div class="dates">
+          <div><span>submissions_open</span><b class="tba">TBA</b></div>
+          <div><span>deadline</span><b class="tba">TBA</b></div>
+          <div><span>notification</span><b class="tba">TBA</b></div>
+          <div><span>workshop</span><b>Dec 2026</b></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- D2 -->
+  <section class="stage" id="s2">
+    <div class="cap"><b>Swiss Brutalist</b> — stark white, massive Archivo Black, hard rules, one hot-red accent. Confident and design-forward; the opposite of bland.</div>
+    <div class="t2 pg"><div class="w">
+      <div class="top"><span>First Workshop on Autonomous Research Agents</span><span class="hot">NeurIPS 2026 / San Diego</span></div>
+      <h1>AU<em>R</em>A</h1>
+      <div class="grid2">
+        <div class="tag">AI agents that form hypotheses, run experiments, and write the paper.</div>
+        <div class="meta">NeurIPS 2026<b>San Diego, CA</b>December 2026</div>
+      </div>
+      <div class="row"><a class="btn p">Submit a Paper</a><a class="btn s">Call for Papers</a></div>
+      <div class="dates">
+        <div><div class="dl">Submissions</div><div class="dv">TBA</div></div>
+        <div class="hot"><div class="dl">Deadline</div><div class="dv">TBA</div></div>
+        <div><div class="dl">Notification</div><div class="dv">TBA</div></div>
+        <div><div class="dl">Workshop</div><div class="dv">Dec ’26</div></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- D3 -->
+  <section class="stage" id="s3">
+    <div class="cap"><b>Riso Print</b> — warm paper, condensed Anton display, riso pink + cobalt overprint, halftone dots. Poster-like, memorable, editorial.</div>
+    <div class="t3 pg"><div class="w">
+      <div class="eye">First Workshop · NeurIPS 2026</div>
+      <h1>AU<em>R</em>A</h1>
+      <div class="tag">Agents that form hypotheses, run experiments &amp; write the paper.</div>
+      <div class="meta">San Diego, CA — December 2026</div>
+      <div class="row"><a class="btn p">Submit a Paper</a><a class="btn s">Call for Papers</a></div>
+      <div class="dates">
+        <div><div class="dl">Submissions</div><div class="dv">TBA</div></div>
+        <div class="hot"><div class="dl">Deadline</div><div class="dv">TBA</div></div>
+        <div><div class="dl">Notification</div><div class="dv">TBA</div></div>
+        <div><div class="dl">Workshop</div><div class="dv">Dec</div></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- D4 -->
+  <section class="stage" id="s4">
+    <div class="cap"><b>Blueprint / Schematic</b> — engineering-drawing navy, cyan grid + dimension lines, mono labels. On-theme for systems/agents; technical and precise.</div>
+    <div class="t4 pg"><div class="w">
+      <div class="eye">First Workshop · NeurIPS 2026</div>
+      <h1>AU<em>R</em>A<span class="tick"></span></h1>
+      <div class="sub">// AI agents that form hypotheses, run experiments, and write the paper.</div>
+      <div class="meta">VENUE: <b>NeurIPS 2026</b> · LOC: <b>San Diego, CA</b> · DATE: <b>Dec 2026</b></div>
+      <div class="row"><a class="btn p">Submit a Paper →</a><a class="btn s">Call for Papers</a></div>
+      <div class="dates">
+        <div><div class="dl">Submissions</div><div class="dv tba">TBA</div></div>
+        <div><div class="dl">Deadline</div><div class="dv tba">TBA</div></div>
+        <div><div class="dl">Notification</div><div class="dv tba">TBA</div></div>
+        <div><div class="dl">Workshop</div><div class="dv">Dec 2026</div></div>
+      </div>
+    </div></div>
+  </section>
+
+<script>
+function show(id,btn){
+  document.querySelectorAll('.stage').forEach(s=>s.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  document.querySelectorAll('.bar button').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  window.scrollTo({top:0});
+}
+</script>
+</body>
+</html>
