@@ -105,14 +105,14 @@ img { max-width: 100%; display: block; }
 .nav-links a[aria-current="page"]::after { right: 0; }
 .nav-links a[aria-current="page"] { color: var(--accent); }
 
-.nav-cta {
+.nav-links a.nav-cta {
   font-weight: 700; font-size: .9rem; color: #fff;
   background: var(--accent); padding: .58rem 1.15rem; border-radius: 999px;
   box-shadow: 0 8px 20px -10px var(--accent);
   transition: transform .2s var(--ease), background .2s var(--ease);
 }
-.nav-cta::after { display: none; }
-.nav-cta:hover { background: var(--accent-dp); transform: translateY(-1px); color: #fff; }
+.nav-links a.nav-cta::after { display: none; }
+.nav-links a.nav-cta:hover { background: var(--accent-dp); transform: translateY(-1px); color: #fff; }
 
 .nav-toggle { display: none; background: none; border: 1px solid var(--line); border-radius: 10px;
   width: 42px; height: 42px; cursor: pointer; align-items: center; justify-content: center; }
