@@ -361,3 +361,6 @@ body.menu-open .nav-toggle span::after  { transform: translateY(-6px) rotate(-45
 .pillar-num { font-family: var(--mono); font-size: .8rem; font-weight: 600; color: var(--accent); letter-spacing: .1em; }
 .pillar-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; line-height: 1.15; letter-spacing: -.01em; margin: .7rem 0 .6rem; color: var(--ink); }
 .pillar-desc { color: var(--muted); font-size: .97rem; }
+
+/* ---- sponsor logos ---- */
+.sponsor-logo { height: 42px; width: auto; max-width: 100%; display: block; margin: .4rem 0 .2rem; }

@@ -302,3 +302,6 @@ body.menu-open .nav-toggle span::after { transform: translateY(-6px) rotate(-45d
 .pillar-num { font-family: var(--disp); font-size: 1.3rem; font-weight: 800; color: var(--accent); letter-spacing: -.02em; }
 .pillar-name { font-family: var(--disp); font-size: 1.28rem; font-weight: 800; text-transform: uppercase; line-height: 1.05; letter-spacing: -.01em; margin: .6rem 0 .6rem; color: var(--ink); }
 .pillar-desc { color: var(--muted); font-size: 1rem; font-style: italic; }
+
+/* ---- sponsor logos ---- */
+.sponsor-logo { height: 42px; width: auto; max-width: 100%; display: block; margin: .4rem 0 .2rem; }
