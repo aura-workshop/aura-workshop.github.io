@@ -294,3 +294,11 @@ body.menu-open .nav-toggle span::after { transform: translateY(-6px) rotate(-45d
 .sponsor-note { color: var(--muted); font-size: 1rem; font-style: italic; }
 .sponsor-note strong { color: var(--ink); font-weight: 600; font-style: normal; }
 .sponsor-lead { background: var(--panel); }
+
+/* ---- thematic pillars ---- */
+.pillars { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px,1fr)); gap: 0; border-top: 2px solid var(--line-bold); border-left: 1px solid var(--line); }
+.pillar { padding: 1.9rem 1.7rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .2s var(--ease); }
+.pillar:hover { background: var(--panel); }
+.pillar-num { font-family: var(--disp); font-size: 1.3rem; font-weight: 800; color: var(--accent); letter-spacing: -.02em; }
+.pillar-name { font-family: var(--disp); font-size: 1.28rem; font-weight: 800; text-transform: uppercase; line-height: 1.05; letter-spacing: -.01em; margin: .6rem 0 .6rem; color: var(--ink); }
+.pillar-desc { color: var(--muted); font-size: 1rem; font-style: italic; }

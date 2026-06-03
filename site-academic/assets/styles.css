@@ -353,3 +353,11 @@ body.menu-open .nav-toggle span::after  { transform: translateY(-6px) rotate(-45
 .sponsor-note { color: var(--muted); font-size: .98rem; }
 .sponsor-note strong { color: var(--ink-soft); font-weight: 600; }
 .sponsor-lead { border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); background: linear-gradient(180deg, var(--accent-wash), var(--surface) 42%); }
+
+/* ---- thematic pillars ---- */
+.pillars { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px,1fr)); gap: 1.3rem; }
+.pillar { padding: 1.7rem 1.6rem 1.8rem; transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s; }
+.pillar:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+.pillar-num { font-family: var(--mono); font-size: .8rem; font-weight: 600; color: var(--accent); letter-spacing: .1em; }
+.pillar-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; line-height: 1.15; letter-spacing: -.01em; margin: .7rem 0 .6rem; color: var(--ink); }
+.pillar-desc { color: var(--muted); font-size: .97rem; }
