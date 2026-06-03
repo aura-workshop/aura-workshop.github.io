@@ -281,3 +281,16 @@ body.menu-open .nav-toggle span::after { transform: translateY(-6px) rotate(-45d
 .lead-note { font-family: var(--disp); font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
 .divider-label { display:flex; align-items:center; gap:1rem; font-family:var(--disp); font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 1.5rem; }
 .divider-label::after { content:""; flex:1; height:2px; background:var(--line-bold); }
+
+/* ---- photo avatars ---- */
+.avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; display: block; }
+
+/* ---- sponsors ---- */
+.sponsors { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 0; border-top: 2px solid var(--line-bold); border-left: 1px solid var(--line); }
+.sponsor { padding: 2rem 1.8rem; display: flex; flex-direction: column; gap: .55rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .2s var(--ease); }
+.sponsor:hover { background: var(--panel); }
+.sponsor-role { font-family: var(--disp); font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.sponsor-name { font-family: var(--disp); font-size: 1.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: -.02em; color: var(--ink); line-height: 1; }
+.sponsor-note { color: var(--muted); font-size: 1rem; font-style: italic; }
+.sponsor-note strong { color: var(--ink); font-weight: 600; font-style: normal; }
+.sponsor-lead { background: var(--panel); }
