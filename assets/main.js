@@ -27,10 +27,15 @@
     });
   }
 
-  // --- active link (mark the current page in the nav) ---
-  var here = location.pathname.split('/').pop() || 'index.html';
+  // --- active link (mark the current page in the nav; clean-URL aware) ---
+  var norm = function (p) {
+    p = p.replace(/index\.html$/, '').replace(/\.html$/, '');   // /cfp.html and /cfp -> /cfp
+    if (p.length > 1) p = p.replace(/\/$/, '');                 // drop trailing slash (keep root "/")
+    return p || '/';
+  };
+  var here = norm(location.pathname);
   document.querySelectorAll('.nav-links a[data-page]').forEach(function (a) {
-    if (a.getAttribute('data-page') === here) {
+    if (norm(a.getAttribute('data-page')) === here) {
       a.setAttribute('aria-current', 'page');
     }
   });
