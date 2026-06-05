@@ -52,3 +52,35 @@
     onScroll();
   }
 })();
+
+/* AURA — Important Dates: highlight the current phase + live AoE countdown */
+(function () {
+  'use strict';
+  var grid = document.querySelector('.dates-grid');
+  if (!grid) return;
+  var cells = [].slice.call(grid.querySelectorAll('.date-cell'));
+  var isFull = function (s) { return /^\d{4}-\d{2}-\d{2}$/.test(s || ''); };
+  var deadline = function (s) { return new Date(s + 'T23:59:59-12:00').getTime(); }; // anywhere-on-Earth
+  var now = Date.now(), active = null, best = Infinity;
+  cells.forEach(function (c) {
+    var d = c.getAttribute('data-date');
+    if (isFull(d)) { var t = deadline(d); if (t > now && t < best) { best = t; active = c; } }
+  });
+  if (!active) active = cells[cells.length - 1] || null; // all deadlines passed -> focus final cell
+  cells.forEach(function (c) { c.classList.remove('is-hot'); });
+  if (!active) return;
+  active.classList.add('is-hot');
+  var dd = active.getAttribute('data-date');
+  if (!isFull(dd)) return;
+  var cd = document.createElement('div');
+  cd.className = 'dcd';
+  active.querySelector('.dv').appendChild(cd);
+  var tick = function () {
+    var ms = deadline(dd) - Date.now();
+    if (ms <= 0) { cd.textContent = 'closed'; return; }
+    var day = Math.floor(ms / 86400000), hr = Math.floor((ms % 86400000) / 3600000), mn = Math.floor((ms % 3600000) / 60000);
+    cd.textContent = 'in ' + day + 'd ' + hr + 'h ' + mn + 'm';
+  };
+  tick();
+  setInterval(tick, 30000);
+})();

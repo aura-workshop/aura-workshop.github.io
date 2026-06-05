@@ -376,3 +376,7 @@ body.menu-open .nav-toggle span::after  { transform: translateY(-6px) rotate(-45
 .rt-topics { font-family: var(--mono); font-size: .7rem; letter-spacing: .04em; text-transform: uppercase; color: var(--faint); margin-bottom: .45rem; }
 .rt-q { color: var(--ink-soft); font-size: 1.04rem; max-width: 70ch; }
 @media (max-width: 560px){ .roundtable { grid-template-columns: 1fr; gap: .35rem; } }
+
+/* ---- important-dates live countdown ---- */
+.date-cell .dcd { font-family: var(--mono); font-size: .72rem; letter-spacing: .03em; color: var(--accent); margin-top: .55rem; }
+.date-cell.is-hot .dcd { color: var(--accent-dp); font-weight: 500; }
