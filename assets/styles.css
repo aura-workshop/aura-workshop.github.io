@@ -367,3 +367,11 @@ body.menu-open .nav-toggle span::after  { transform: translateY(-6px) rotate(-45
 
 /* ---- speaker pillar anchor tag ---- */
 .speaker-pillar { font-family: var(--mono); font-size: .66rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: .55rem; }
+
+/* ---- open-problems roundtables (Schedule page) ---- */
+.roundtables { border-top: 1px solid var(--line); }
+.roundtable { display: grid; grid-template-columns: 56px 1fr; gap: 1.2rem; padding: 1.4rem 0; border-bottom: 1px solid var(--line); align-items: start; }
+.rt-id { font-family: var(--serif); font-weight: 600; font-size: 1.5rem; color: var(--accent); line-height: 1; }
+.rt-topics { font-family: var(--mono); font-size: .7rem; letter-spacing: .04em; text-transform: uppercase; color: var(--faint); margin-bottom: .45rem; }
+.rt-q { color: var(--ink-soft); font-size: 1.04rem; max-width: 70ch; }
+@media (max-width: 560px){ .roundtable { grid-template-columns: 1fr; gap: .35rem; } }
